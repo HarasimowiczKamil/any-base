@@ -1,0 +1,22 @@
+{
+    "name": "any-base",
+    "version": "1.0.0",
+    "description": "Converter from any base to other any base",
+    "main": "index.js",
+    "scripts": {
+        "test": "node tests/test.js"
+    },
+    "keywords": [
+        "number",
+        "convert",
+        "base",
+        "alphabet",
+        "short number", "long numbers",
+        "dec", "hex", "bin", "oct", "any"
+    ],
+    "author": {
+        "name": "Kamil Harasimowicz",
+        "email": "mifczu@gmail.com"
+    },
+    "license": "MIT"
+}
