@@ -1,9 +1,27 @@
+'use strict';
 
+/**
+ * Converter
+ *
+ * @param {string} srcAlphabet
+ * @param {string} dstAlphabet
+ * @constructor
+ */
 function Converter(srcAlphabet, dstAlphabet) {
+    if (!srcAlphabet || !dstAlphabet || !srcAlphabet.length || !dstAlphabet) {
+        throw new Error('Bad alphabet');
+    }
     this.srcAlphabet = srcAlphabet;
     this.dstAlphabet = dstAlphabet;
 }
 
+/**
+ * Convert number from source alphabet to destonation alphabet
+ *
+ * @param {string} number - number represent as a string
+ *
+ * @returns {string}
+ */
 Converter.prototype.convert = function(number) {
     var i, divide, newlen,
     numberMap = {},
@@ -11,6 +29,10 @@ Converter.prototype.convert = function(number) {
     toBase = this.dstAlphabet.length,
     length = number.length,
     result = '';
+
+    if (this.srcAlphabet === this.dstAlphabet) {
+        return number;
+    }
 
     for (i = 0; i < length; i++) {
         numberMap[i] = this.srcAlphabet.indexOf(number[i]);

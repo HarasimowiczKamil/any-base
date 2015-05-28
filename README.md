@@ -8,7 +8,7 @@ npm install any-base --save
 
 ## API ##
 
-### AnyBase ###
+### AnyBase() ###
 
 ```
 converterFunction = anyBase(sourceAlphabet, destinationAlphabet);
@@ -23,7 +23,7 @@ converterFunction = anyBase(sourceAlphabet, destinationAlphabet);
 
 Returns __function__ that converts the number of source base to the destination
 
-### Convert ###
+### Convert() ###
 
 ```
 converterFunction(number)
