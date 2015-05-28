@@ -1,6 +1,10 @@
-## Installation ##
+# README #
 
 The library allows you to convert any large numbers in any number base to another number base. The base is determined by specifying the alphabet. So is full freedom
+
+[![NPM](https://nodei.co/npm/any-base.png?downloads=true&stars=true)](https://nodei.co/npm/any-base/)
+
+## Installation ##
 
 ```
 npm install any-base --save

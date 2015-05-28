@@ -14,6 +14,10 @@
         "short number", "long numbers",
         "dec", "hex", "bin", "oct", "any"
     ],
+    "repository" : {
+        "type" : "git",
+        "url" : "https://github.com/HarasimowiczKamil/any-base.git"
+    },
     "author": {
         "name": "Kamil Harasimowicz",
         "email": "mifczu@gmail.com"
