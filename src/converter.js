@@ -8,7 +8,7 @@
  * @constructor
  */
 function Converter(srcAlphabet, dstAlphabet) {
-    if (!srcAlphabet || !dstAlphabet || !srcAlphabet.length || !dstAlphabet) {
+    if (!srcAlphabet || !dstAlphabet || !srcAlphabet.length || !dstAlphabet.length) {
         throw new Error('Bad alphabet');
     }
     this.srcAlphabet = srcAlphabet;
