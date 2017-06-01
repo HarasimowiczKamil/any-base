@@ -3,8 +3,8 @@
 /**
  * Converter
  *
- * @param {string} srcAlphabet
- * @param {string} dstAlphabet
+ * @param {string|Array} srcAlphabet
+ * @param {string|Array} dstAlphabet
  * @constructor
  */
 function Converter(srcAlphabet, dstAlphabet) {
@@ -16,11 +16,11 @@ function Converter(srcAlphabet, dstAlphabet) {
 }
 
 /**
- * Convert number from source alphabet to destonation alphabet
+ * Convert number from source alphabet to destination alphabet
  *
- * @param {string} number - number represent as a string
+ * @param {string|Array} number - number represented as a string or array of points
  *
- * @returns {string}
+ * @returns {string|Array}
  */
 Converter.prototype.convert = function(number) {
     var i, divide, newlen,
@@ -28,7 +28,7 @@ Converter.prototype.convert = function(number) {
     fromBase = this.srcAlphabet.length,
     toBase = this.dstAlphabet.length,
     length = number.length,
-    result = '';
+    result = typeof number === 'string' ? '' : [];
 
     if (this.srcAlphabet === this.dstAlphabet) {
         return number;
@@ -50,7 +50,7 @@ Converter.prototype.convert = function(number) {
             }
         }
         length = newlen;
-        result = this.dstAlphabet[divide] + result;
+        result = this.dstAlphabet.slice(divide, divide + 1).concat(result);
     } while (newlen != 0);
 
     return result;

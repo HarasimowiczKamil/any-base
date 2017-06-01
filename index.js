@@ -3,19 +3,19 @@ var Converter = require('./src/converter');
 /**
  * Function get source and destination alphabet and return convert function
  *
- * @param {string} srcAlphabet
- * @param {string} dstAlphabet
+ * @param {string|Array} srcAlphabet
+ * @param {string|Array} dstAlphabet
  *
- * @returns {function(number)}
+ * @returns {function(number|Array)}
  */
 function anyBase(srcAlphabet, dstAlphabet) {
     var converter = new Converter(srcAlphabet, dstAlphabet);
     /**
      * Convert function
      *
-     * @param {string} number
+     * @param {string|Array} number
      *
-     * @return {string} number
+     * @return {string|Array} number
      */
     return function (number) {
         return converter.convert(number);
