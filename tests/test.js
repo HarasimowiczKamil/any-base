@@ -13,7 +13,7 @@ function test (a, b, desc) {
         console.log('\033[32mOK: ' + desc + '\033[0m');
     } else {
         console.error('\033[31mFAIL: ' + desc + '\033[0m');
-        console.error('\t\033[31m"' + a + '" doesn\'t match "' + b + '"');
+        console.error('\t\033[31m"\033[0m' + a + '\033[31m" doesn\'t match "\033[0m' + b + '\033[31m"\033[0m');
     }
 }
 
