@@ -30,6 +30,10 @@ Converter.prototype.convert = function(number) {
     length = number.length,
     result = typeof number === 'string' ? '' : [];
 
+    if (!this.isValid(number)) {
+        throw new Error('Number "' + number + '" contains of non-alphabetic digits (' + this.srcAlphabet + ')');
+    }
+
     if (this.srcAlphabet === this.dstAlphabet) {
         return number;
     }
@@ -51,9 +55,26 @@ Converter.prototype.convert = function(number) {
         }
         length = newlen;
         result = this.dstAlphabet.slice(divide, divide + 1).concat(result);
-    } while (newlen != 0);
+    } while (newlen !== 0);
 
     return result;
-}
+};
+
+/**
+ * Valid number with source alphabet
+ *
+ * @param {number} number
+ *
+ * @returns {boolean}
+ */
+Converter.prototype.isValid = function(number) {
+    var i = 0;
+    for (; i < number.length; ++i) {
+        if (this.srcAlphabet.indexOf(number[i]) === -1) {
+            return false;
+        }
+    }
+    return true;
+};
 
 module.exports = Converter;

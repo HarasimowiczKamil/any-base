@@ -1,4 +1,4 @@
-var Converter = require('../src/converter'),
+const Converter = require('../src/converter'),
 hex2bin = new Converter('0123456789abcdef', '01'),
 bin2hex = new Converter('01', '0123456789abcdef'),
 dec2hex = new Converter('0123456789', '0123456789abcdef'),
@@ -25,24 +25,24 @@ test(hex2dec.convert('2d5e'), '11614', 'hex2bin(2d5e) === 11614');
 test(oct2dec.convert('26536'), '11614', 'hex2bin(26536) === 11614');
 test(dec2otc.convert('11614'), '26536', 'hex2bin(11614) === 26536');
 
-var short = shorter.convert('123456789123456789');
+const short = shorter.convert('123456789123456789');
 test(unshorter.convert(short), '123456789123456789', 'unshorter(shorter(123456789123456789)) === 123456789123456789');
 
 // UTF-8 codepoint compatibility tests
-var ucs2 = require('punycode').ucs2;
-var dec2moji = new Converter(
+const ucs2 = require('punycode').ucs2;
+const dec2moji = new Converter(
   ucs2.decode('0123456789'),
   ucs2.decode(
     '😀😃😄😁😆😅😂🤣☺😊😇🙂🙃😉😌😍😘😗😙😚😋😜😝😛🤑🤗🤓😎😏😒😞😔😟😕🙁☹😣😖😫😩😤😠😡😶😐😑😯😦😧😮😲😵😳😱😨😰😢😥😴🤤😭😓😪🙄'
   )
 );
-var hex2moji = new Converter(
+const hex2moji = new Converter(
   ucs2.decode('0123456789abcdef'),
   ucs2.decode(
     '😀😃😄😁😆😅😂🤣☺😊😇🙂🙃😉😌😍😘😗😙😚😋😜😝😛🤑🤗🤓😎😏😒😞😔😟😕🙁☹😣😖😫😩😤😠😡😶😐😑😯😦😧😮😲😵😳😱😨😰😢😥😴🤤😭😓😪🙄'
   )
 );
-var moji2hex = new Converter(
+const moji2hex = new Converter(
   ucs2.decode(
     '😀😃😄😁😆😅😂🤣☺😊😇🙂🙃😉😌😍😘😗😙😚😋😜😝😛🤑🤗🤓😎😏😒😞😔😟😕🙁☹😣😖😫😩😤😠😡😶😐😑😯😦😧😮😲😵😳😱😨😰😢😥😴🤤😭😓😪🙄'
   ),
@@ -64,3 +64,10 @@ test(
   '2d5e',
   'ucs2.encode(moji2hex.convert(ucs2.decode(😄😱😞))) === 2d5e'
 );
+
+try {
+    bin2hex.convert('01thisshouldntwork');
+    console.error('\033[31mFAIL: Converter shoul throw an error number contains of non-alphabetic digits.\033[0m');
+} catch (e) {
+    console.log('\033[32mOK: Converter throe an error number contains of non-alphabetic digits\033[0m');
+}
