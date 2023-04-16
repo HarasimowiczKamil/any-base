@@ -35,6 +35,6 @@
     "browserify": "^13.1.1",
     "punycode": "^2.1.0",
     "uglify-js": "^2.7.4",
-    "watchify": "^3.7.0"
+    "watchify": "^4.0.0"
   }
 }
